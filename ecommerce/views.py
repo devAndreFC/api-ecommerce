@@ -19,6 +19,12 @@ class ProductsAPIView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+    def get_queryset(self):
+        if self.kwargs.get('categoria_pk'):
+            return self.queryset.filter(category_id=self.kwargs.get('categoria_pk'))
+        
+        return self.queryset.all()
+
 
 class ProductAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
