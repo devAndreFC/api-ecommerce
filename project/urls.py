@@ -8,6 +8,6 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('token/', TokenObtainPairView.as_view()),
-    path('token/refresh', TokenRefreshView.as_view()),
+    path('token/refresh/', TokenRefreshView.as_view()),
     path('auth/', include('rest_framework.urls')),
 ]
